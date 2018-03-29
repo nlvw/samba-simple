@@ -8,7 +8,7 @@ RUN apk add --update --no-cache \
     supervisor \
     && rm -rf /var/cache/apk/*
 
-# Copy the supervord configuration file
+# Copy the supervisord configuration file
 COPY supervisord.conf /etc/supervisord.conf
 
 # Expose Needed ports (137/udp and 138udp for nmbd)(139 and 445 for smbd) 
