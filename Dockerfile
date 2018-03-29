@@ -8,10 +8,11 @@ RUN apk add --update --no-cache \
     supervisor \
     && rm -rf /var/cache/apk/*
 
-# copy config files from project folder to get a default config going for samba and supervisord
+# Copy the supervord configuration file
 COPY supervisord.conf /etc/supervisord.conf
 
-# exposes samba's default ports (137, 138 for nmbd and 139, 445 for smbd) 
+# Expose Needed ports (137/udp and 138udp for nmbd)(139 and 445 for smbd) 
 EXPOSE 137/udp 138/udp 139 445
 
+# Supervisord will run the samba services in the foreground and redirect logs
 ENTRYPOINT ["supervisord"]
